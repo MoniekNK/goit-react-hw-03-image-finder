@@ -1,0 +1,5 @@
+.Modal {
+  width: 100vw;
+  height: calc(100vh - 24px);
+  max-width: 100%;
+}
