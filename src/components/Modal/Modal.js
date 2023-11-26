@@ -4,7 +4,7 @@ import css from './Modal.module.css';
 
 export class Modal extends Component {
   handleModalBackgroundClick = event => {
-    if (event.target.classList.contains('Overlay')) {
+    if (event.target === event.currentTarget) {
       this.props.onCloseModal();
     }
   };

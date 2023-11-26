@@ -11,7 +11,7 @@ import Notiflix from 'notiflix';
 const BASE_URL = 'https://pixabay.com/api/';
 const API_KEY = '754704-15f293fdc79a851fbfbf7bf56';
 
-export class App extends Component {
+class App extends Component {
   state = {
     images: { total: 0, hits: [] },
     query: '',
@@ -20,6 +20,19 @@ export class App extends Component {
     showModal: false,
     selectedImage: '',
   };
+
+  componentDidMount() {
+    this.fetchImages();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { query: currentQuery, page: currentPage } = this.state;
+    const { query: prevQuery, page: prevPage } = prevState;
+
+    if (currentQuery !== prevQuery || currentPage !== prevPage) {
+      this.fetchImages();
+    }
+  }
 
   fetchImages = () => {
     const { query, page } = this.state;
@@ -108,3 +121,5 @@ export class App extends Component {
     );
   }
 }
+
+export { App };
