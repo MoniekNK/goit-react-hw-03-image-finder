@@ -67,7 +67,6 @@ class App extends Component {
             total: response.data.totalHits,
             hits: [...prevState.images.hits, ...response.data.hits],
           },
-          page: prevState.page + 1,
         }));
       })
       .catch(error => {
@@ -86,7 +85,14 @@ class App extends Component {
   };
 
   handleLoadMore = () => {
-    this.fetchImages();
+    const { page, hasMore } = this.state;
+
+    if (hasMore) {
+      this.setState(
+        prevState => ({ page: prevState.page + 1 }),
+        this.fetchImages
+      );
+    }
   };
 
   handleClickImage = imageUrl => {
