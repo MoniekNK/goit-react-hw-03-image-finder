@@ -36,6 +36,10 @@ class App extends Component {
 
   fetchImages = () => {
     const { query, page } = this.state;
+    if (!query) {
+      return;
+    }
+
     const url = `${BASE_URL}?q=${query}&page=${page}&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`;
 
     this.setState({ isLoading: true });
