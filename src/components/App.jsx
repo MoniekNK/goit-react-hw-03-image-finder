@@ -83,20 +83,14 @@ class App extends Component {
   };
 
   handleSearch = query => {
-    this.setState(
-      { query, page: 1, images: { total: 0, hits: [] } },
-      this.fetchImages
-    );
+    this.setState({ query, page: 1, images: { total: 0, hits: [] } });
   };
 
   handleLoadMore = () => {
     const { hasMore } = this.state;
 
     if (hasMore) {
-      this.setState(
-        prevState => ({ page: prevState.page + 1 }),
-        this.fetchImages
-      );
+      this.setState(prevState => ({ page: prevState.page + 1 }));
     }
   };
 
